@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Undertale Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game">
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="screen active">
+    <img src="undertale-logo.png" class="splash-logo" alt="UNDERTALE">
+    <p class="splash-text">[PRESS Z OR ENTER]</p>
+  </div>
+
+  <!-- NAME SCREEN -->
+  <div id="name-screen" class="screen">
+    <h1>Name the fallen human.</h1>
+    <div id="name-display"></div>
+    <div id="letters" class="letters"></div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div id="menu-screen" class="screen">
+
+    <img src="pillars.png" class="pillars">
+    <img src="toriel.png" class="sprite">
+
+    <div class="menu-info">
+      <p id="player-name">Frisk</p>
+      <p>LV 1</p>
+      <p>Ruins - Leaf Pile</p>
+    </div>
+
+    <div class="menu-options">
+
+      <div class="top-buttons">
+        <div class="menu-option" data-row="0" data-col="0">Continue</div>
+        <div class="menu-option" data-row="0" data-col="1">Reset</div>
+      </div>
+
+      <div class="bottom-button">
+        <div class="menu-option" data-row="1" data-col="0">Settings</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RUINS SCREEN -->
+  <div id="ruins-screen" class="screen">
+    <img src="ruinas.png" class="ruins-image" alt="Ruins">
+  </div>
+
+</div>
+
+<audio id="move-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+<audio id="select-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.wav"></audio>
+<audio id="menu-music" src="start-menu.mp3" loop></audio>
+
+<script src="script.js"></script>
+</body>
+</html>

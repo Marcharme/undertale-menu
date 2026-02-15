@@ -1,0 +1,219 @@
+body {
+  background: black;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  overflow: hidden;
+  image-rendering: pixelated;
+}
+
+/* TRANSITIONS */
+
+.screen {
+  display: none;
+  padding-top: 60px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.screen.active {
+  display: block;
+  opacity: 1;
+}
+
+/* SPLASH SCREEN */
+
+#splash-screen {
+  display: flex !important;
+  padding-top: 0 !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#splash-screen.active {
+  display: flex !important;
+  opacity: 1;
+}
+
+#splash-screen:not(.active) {
+  display: none !important;
+  opacity: 0;
+}
+
+.splash-logo {
+  width: 600px;
+  image-rendering: pixelated;
+  margin-bottom: 60px;
+}
+
+.splash-text {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: white;
+  animation: blink 1s infinite;
+  margin: 0;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* NAME SCREEN */
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+#name-display {
+  font-size: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 6px;
+  min-height: 30px;
+}
+
+.letters {
+  display: grid;
+  grid-template-columns: repeat(7, 50px);
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.letter {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.selected {
+  color: yellow;
+}
+
+/* MAIN MENU */
+
+#menu-screen {
+  position: relative;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+/* Pillars */
+.pillars {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+/* Toriel Sprite */
+.sprite {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  image-rendering: pixelated;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Player Info */
+.menu-info {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  font-size: 18px;
+  z-index: 4;
+  line-height: 2;
+}
+
+.menu-info p {
+  margin: 5px 0;
+}
+
+.menu-info p:first-child {
+  display: inline;
+  margin-right: 40px;
+}
+
+.menu-info p:nth-child(2) {
+  display: inline;
+  margin-right: 0;
+}
+
+.menu-info p:nth-child(3) {
+  display: block;
+  margin-top: 15px;
+}
+
+/* Menu Layout */
+.menu-options {
+  position: absolute;
+  bottom: 400px;
+  width: 100%;
+  z-index: 5;
+  font-size: 22px;
+}
+
+/* Continue + Reset */
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin-bottom: 30px;
+}
+
+/* Settings */
+.bottom-button {
+  text-align: center;
+  margin-top: 0;
+}
+
+.menu-option {
+  cursor: pointer;
+}
+
+.menu-option.selected {
+  color: yellow;
+}
+
+/* RUINS SCREEN */
+
+#ruins-screen {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  padding-top: 0 !important;
+}
+
+#ruins-screen.active {
+  display: flex !important;
+  opacity: 1;
+}
+
+#ruins-screen:not(.active) {
+  display: none !important;
+  opacity: 0;
+}
+
+.ruins-image {
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated;
+}
