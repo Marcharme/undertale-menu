@@ -1,4 +1,5 @@
 // ELEMENTS
+const settingsScreen = document.getElementById("settings-screen");
 const splashScreen = document.getElementById("splash-screen");
 const lettersContainer = document.getElementById("letters");
 const nameDisplay = document.getElementById("name-display");
@@ -202,8 +203,37 @@ function playSelect() {
   selectSound.play();
 }
 
-
-// KEYBOARD EVENTS
+document.addEventListener("keydown", (e) => {
+  if (currentScreen === "splash") {
+    /* ... */
+  } else if (currentScreen === "name") {
+    /* ... */
+  } else if (currentScreen === "menu") {
+    
+    if (e.key === "Enter") {
+      playSelect();
+      const choice = menuOptions[menuIndex].textContent;
+      if (choice === "Continue") {
+        currentScreen = "ruins";
+        menuScreen.classList.remove("active");
+        ruinsScreen.classList.add("active");
+      }
+      if (choice === "Reset") resetGame();
+      if (choice === "Settings") {
+        currentScreen = "settings";
+        menuScreen.classList.remove("active");
+        settingsScreen.classList.add("active");
+      }
+    }
+  } else if (currentScreen === "settings") {
+    if (e.key === "Enter" || e.key === "Escape") {
+      currentScreen = "menu";
+      settingsScreen.classList.remove("active");
+      menuScreen.classList.add("active");
+      updateMenuSelection();
+    }
+  }
+});
 
 document.addEventListener("keydown", (e) => {
   if (currentScreen === "splash") {
@@ -267,5 +297,5 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// INITIALIZE SELECTION
+
 updateSelection();

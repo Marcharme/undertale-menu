@@ -217,3 +217,34 @@ h1 {
   max-height: 100%;
   image-rendering: pixelated;
 }
+
+
+/* SETTINGS SCREEN */
+
+#settings-screen {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  padding-top: 0 !important;
+}
+
+#settings-screen.active {
+  display: flex !important;
+  opacity: 1;
+}
+
+#settings-screen:not(.active) {
+  display: none !important;
+  opacity: 0;
+}
+
+#settings-screen h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#settings-screen p {
+  font-size: 16px;
+}
