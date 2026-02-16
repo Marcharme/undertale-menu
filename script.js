@@ -9,6 +9,9 @@ const ruinsScreen = document.getElementById("ruins-screen");
 const playerNameText = document.getElementById("player-name");
 const menuOptions = document.querySelectorAll(".menu-option");
 
+const settingsOptions = document.querySelectorAll(".settings-option");
+const languageValue   = document.getElementById("language-value");
+
 const moveSound = document.getElementById("move-sound");
 const selectSound = document.getElementById("select-sound");
 const menuMusic = document.getElementById("menu-music");
@@ -23,8 +26,23 @@ let elements = [];
 let selectedIndex = 0;
 let menuIndex = 0;
 
-// CREATE LETTER GRID
+let settingsIndex = 0;
+const languages   = ["ENGLISH"];       // extend as desired
+let languageIndex = 0;
 
+function updateSettingsSelection() {
+  settingsOptions.forEach(opt => opt.classList.remove("selected"));
+  if (settingsOptions[settingsIndex]) {
+    settingsOptions[settingsIndex].classList.add("selected");
+  }
+}
+
+function cycleLanguage(direction) {
+  languageIndex = (languageIndex + direction + languages.length) % languages.length;
+  if (languageValue) languageValue.textContent = languages[languageIndex];
+}
+
+// CREATE LETTER GRID
 alphabet.forEach(letter => {
   const div = document.createElement("div");
   div.textContent = letter;
@@ -48,9 +66,7 @@ backspaceBtn.after(doneBtn);
 elements.push(backspaceBtn);
 elements.push(doneBtn);
 
-
 // SHAKE FUNCTION
-
 function applyRandomShake(element) {
   const duration = (Math.random() * 0.2 + 0.15).toFixed(2);
   const delay = (Math.random() * 0.5).toFixed(2);
@@ -78,7 +94,6 @@ function applyRandomShake(element) {
 }
 
 // SELECTION UPDATES
-
 function updateSelection() {
   elements.forEach(el => el.classList.remove("selected"));
   elements[selectedIndex].classList.add("selected");
@@ -89,9 +104,7 @@ function updateMenuSelection() {
   menuOptions[menuIndex].classList.add("selected");
 }
 
-
 // MOVE LETTER CURSOR
-
 function moveHorizontal(direction) {
   if (selectedIndex >= alphabet.length) return;
 
@@ -134,7 +147,6 @@ function moveVertical(direction) {
 }
 
 // ACTIVATE SELECTION
-
 function activateSelection() {
   const value = elements[selectedIndex].textContent;
   playSelect();
@@ -155,9 +167,7 @@ function activateSelection() {
   nameDisplay.textContent = playerName;
 }
 
-
 // SWITCH TO MENU
-
 function switchToMenu() {
   currentScreen = "menu";
   nameScreen.classList.remove("active");
@@ -173,7 +183,6 @@ function switchToMenu() {
 }
 
 // RESET GAME
-
 function resetGame() {
   playerName = "";
   nameDisplay.textContent = "";
@@ -189,9 +198,7 @@ function resetGame() {
   menuMusic.currentTime = 0;
 }
 
-
 // SOUND 
-
 function playMove() {
   moveSound.currentTime = 0;
   moveSound.play();
@@ -205,11 +212,10 @@ function playSelect() {
 
 document.addEventListener("keydown", (e) => {
   if (currentScreen === "splash") {
-    /* ... */
+    /* … existing splash logic … */
   } else if (currentScreen === "name") {
-    /* ... */
+    /* … existing name logic … */
   } else if (currentScreen === "menu") {
-    
     if (e.key === "Enter") {
       playSelect();
       const choice = menuOptions[menuIndex].textContent;
@@ -223,10 +229,39 @@ document.addEventListener("keydown", (e) => {
         currentScreen = "settings";
         menuScreen.classList.remove("active");
         settingsScreen.classList.add("active");
+
+        settingsIndex = 0;
+        updateSettingsSelection();
       }
     }
   } else if (currentScreen === "settings") {
-    if (e.key === "Enter" || e.key === "Escape") {
+    // arrow navigation between rows
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      settingsIndex = (settingsIndex + 1) % settingsOptions.length;
+      playMove();
+      updateSettingsSelection();
+    }
+    if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      settingsIndex = (settingsIndex - 1 + settingsOptions.length) % settingsOptions.length;
+      playMove();
+      updateSettingsSelection();
+    }
+
+    if (e.key === "Enter") {
+      playSelect();
+      if (settingsIndex === 0) {
+        // EXIT
+        currentScreen = "menu";
+        settingsScreen.classList.remove("active");
+        menuScreen.classList.add("active");
+        updateMenuSelection();
+      } else if (settingsIndex === 1) {
+        // LANGUAGE
+        cycleLanguage(1);
+      }
+    }
+
+    if (e.key === "Escape") {
       currentScreen = "menu";
       settingsScreen.classList.remove("active");
       menuScreen.classList.add("active");
@@ -235,6 +270,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// existing second keydown listener remains unchanged
 document.addEventListener("keydown", (e) => {
   if (currentScreen === "splash") {
     if (e.key.toLowerCase() === "z" || e.key === "Enter") {
@@ -296,6 +332,3 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
-
-
-updateSelection();

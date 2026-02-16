@@ -218,14 +218,13 @@ h1 {
   image-rendering: pixelated;
 }
 
-
 /* SETTINGS SCREEN */
 
 #settings-screen {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
   background: black;
   padding-top: 0 !important;
 }
@@ -247,4 +246,26 @@ h1 {
 
 #settings-screen p {
   font-size: 16px;
+}
+
+/* ---------- settings‑screen layout & selection ---------- */
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 22px;
+  margin-bottom: 100px;
+}
+
+.settings-option {
+  cursor: pointer;
+}
+
+.settings-option.selected {
+  color: yellow;
+}
+
+#language-value {
+  margin-left: 10px;
 }

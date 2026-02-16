@@ -25,42 +25,45 @@
 
   <!-- MAIN MENU -->
   <div id="menu-screen" class="screen">
-
     <img src="pillars.png" class="pillars">
     <img src="toriel.png" class="sprite">
-
     <div class="menu-info">
       <p id="player-name">Frisk</p>
       <p>LV 1</p>
       <p>Ruins - Leaf Pile</p>
     </div>
-
     <div class="menu-options">
-
       <div class="top-buttons">
         <div class="menu-option" data-row="0" data-col="0">Continue</div>
         <div class="menu-option" data-row="0" data-col="1">Reset</div>
       </div>
-
       <div class="bottom-button">
         <div class="menu-option" data-row="1" data-col="0">Settings</div>
       </div>
-
     </div>
-
   </div>
 
   <!-- SETTINGS SCREEN -->
   <div id="settings-screen" class="screen">
-    <h2>Settings</h2>
-    <p>Press Enter or Escape to return</p>
+    <h2>SETTINGS</h2>
+
+    <div class="settings-menu">
+      <div class="settings-row">
+        <div class="settings-option" data-index="0">EXIT</div>
+      </div>
+      <div class="settings-row">
+        <div class="settings-option" data-index="1">LANGUAGE</div>
+        <div class="settings-value" id="language-value">ENGLISH</div>
+      </div>
+    </div>
+
+    <p class="return-text">Press Enter or Escape to return</p>
   </div>
 
   <!-- RUINS SCREEN -->
   <div id="ruins-screen" class="screen">
     <img src="ruinas.png" class="ruins-image" alt="Ruins">
   </div>
-
 </div>
 
 <audio id="move-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
