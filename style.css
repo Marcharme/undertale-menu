@@ -219,40 +219,67 @@ h1 {
 }
 
 /* SETTINGS SCREEN */
-
 #settings-screen {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+  display: block !important;
+  height: 100vh;
   background: black;
   padding-top: 0 !important;
 }
-
 #settings-screen.active {
-  display: flex !important;
+  display: block !important;
   opacity: 1;
 }
-
 #settings-screen:not(.active) {
   display: none !important;
   opacity: 0;
 }
-
 #settings-screen h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-#settings-screen p {
-  font-size: 16px;
-}
-
-/* ---------- settings‑screen layout & selection ---------- */
 .settings-menu {
   display: flex;
   flex-direction: column;
+  align-items: left;
+  gap: 24px;
+  font-size: 18px;
+  padding-left: 40px;
+}
+
+.settings-row {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 30px;
+}
+
+.settings-option {
+  cursor: pointer;
+  color: white;
+}
+
+.settings-option.selected {
+  color: yellow;
+}
+
+.settings-value {
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+}
+
+.return-text {
+  display: none;
+}
+
+
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   gap: 20px;
   font-size: 22px;
   margin-bottom: 100px;
@@ -268,4 +295,12 @@ h1 {
 
 #language-value {
   margin-left: 10px;
+}
+
+.settings-dog {
+  position:absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 100px;
+  image-rendering: pixelated;
 }
